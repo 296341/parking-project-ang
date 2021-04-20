@@ -1,0 +1,58 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name"
+          [(ngModel)]="name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Parkings List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let parking of parkings; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveParking(parking, i)"
+        >
+          {{ parking.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentParking">
+        <h4>parking</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentParking }}
+        </div>
+        <div>
+          <label><strong>Type:</strong></label> {{ currentParking }}
+        </div>
+        <div>
+          <label><strong>City:</strong></label> {{ currentParking }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/parkings/{{ currentParking }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentParking">
+        <br />
+        <p>Please click on a Parking...</p>
+      </div>
+    </div>
+</div>
+
