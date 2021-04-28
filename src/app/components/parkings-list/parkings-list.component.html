@@ -27,29 +27,30 @@
           [class.active]="i == currentIndex"
           (click)="setActiveParking(parking, i)"
         >
-          {{ parking.name }}
+          {{ parking.city }}
+         
         </li>
       </ul>
     </div>
     <div class="col-md-6">
-      <div *ngIf="currentParking">
+      <div *ngIf="currentPark">
         <h4>parking</h4>
         <div>
-          <label><strong>Name:</strong></label> {{ currentParking }}
+          <label><strong>Name:</strong></label> {{ currentPark }}
         </div>
         <div>
-          <label><strong>Type:</strong></label> {{ currentParking }}
+          <label><strong>Type:</strong></label> {{ currentPark }}
         </div>
         <div>
-          <label><strong>City:</strong></label> {{ currentParking }}
+          <label><strong>City:</strong></label> {{ currentPark }}
         </div>
   
-        <a class="badge badge-warning" routerLink="/parkings/{{ currentParking }}">
+        <a class="badge badge-warning" routerLink="/parkings/{{ currentPark }}">
           Edit
         </a>
       </div>
   
-      <div *ngIf="!currentParking">
+      <div *ngIf="!currentPark">
         <br />
         <p>Please click on a Parking...</p>
       </div>

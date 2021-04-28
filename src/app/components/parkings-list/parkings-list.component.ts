@@ -9,7 +9,7 @@ import { ParkingService } from 'src/app/services/parking.service';
 export class ParkingsListComponent implements OnInit {
   
   parkings: any;
-  currentParking = null;
+  currentPark = '';
   currentIndex = -1;
   name = '';
 
@@ -35,14 +35,14 @@ export class ParkingsListComponent implements OnInit {
 
   refreshList(): void{
     this.getAllParkings();
+    this.currentPark = '';
     this.currentIndex = -1;
-    this.currentParking = null;
   }
 
-  setActiveParking(parking: any, index: any): void {
-    this.currentParking = parking;
-    //console.log(`${this.currentParking}`);
+  setActiveParking(parking: any, index: number): void {
+    this.currentPark = parking;
     this.currentIndex = index
+    //console.log(`${this.currentParking}`);
   }
 
   searchName(): void {
@@ -56,6 +56,7 @@ export class ParkingsListComponent implements OnInit {
         console.log(error);
       }
     );
+
   }
 
 
