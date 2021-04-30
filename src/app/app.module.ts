@@ -8,13 +8,15 @@ import { AddParkingComponent } from './components/add-parking/add-parking.compon
 import { ParkingsListComponent } from './components/parkings-list/parkings-list.component';
 import { ParkingDetailsComponent } from './components/parking-details/parking-details.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateParkingComponent } from './components/update-parking/update-parking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddParkingComponent,
     ParkingsListComponent,
-    ParkingDetailsComponent
+    ParkingDetailsComponent,
+    UpdateParkingComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class ParkingService {
     return this.http.get(`${this.apiServerUrl}/parkings`);
   }
 
-  get(id: any): Observable<any> {
+  getOne(id: any): Observable<any> {
     return this.http.get(`${this.apiServerUrl}/parkings/${id}`);
   }
 

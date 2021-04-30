@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Parking } from 'src/app/parking';
 import { ParkingService } from 'src/app/services/parking.service';
 
 @Component({
@@ -8,12 +11,11 @@ import { ParkingService } from 'src/app/services/parking.service';
 })
 export class ParkingsListComponent implements OnInit {
   
-  parkings: any;
-  currentPark = '';
-  currentIndex = -1;
-  name = '';
+parkings!: Parking[];
 
-  constructor(private parkingService: ParkingService) { }
+  constructor(
+    private parkingService: ParkingService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getAllParkings();
@@ -33,15 +35,33 @@ export class ParkingsListComponent implements OnInit {
     );
   }
 
-  refreshList(): void{
+  deleteParking(_id: any) {
+    this.parkingService.delete(_id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.getAllParkings();
+        },
+        error => console.log(error));
+  }
+
+  parkingDetail(_id: string){
+    this.router.navigate(['parkings', _id]);
+  }
+
+  updateParking(_id: string){
+    this.router.navigate(['update', _id]);
+  }
+
+ /* refreshList(): void{
     this.getAllParkings();
-    this.currentPark = '';
+    this.currentParking = null;
     this.currentIndex = -1;
   }
 
-  setActiveParking(parking: any, index: number): void {
-    this.currentPark = parking;
-    this.currentIndex = index
+  setActiveParking(parking: any, index: any): void {
+    this.currentParking = parking;
+    this.currentIndex = index;
     //console.log(`${this.currentParking}`);
   }
 
@@ -59,6 +79,6 @@ export class ParkingsListComponent implements OnInit {
 
   }
 
-
+*/
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Parking } from 'src/app/parking';
 import { ParkingService } from 'src/app/services/parking.service';
 
 @Component({
@@ -8,31 +10,25 @@ import { ParkingService } from 'src/app/services/parking.service';
 })
 export class AddParkingComponent implements OnInit {
 
-  parking = {
-    name: '',
-    type: '',
-    city: ''
-  };
+  parking: Parking = new Parking();
   submitted = false;
 
-  constructor(private parkingService: ParkingService) { }
+  constructor(
+    private parkingService: ParkingService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   saveParking(): void {
-    const data = {
-      name: this.parking.name,
-      type: this.parking.type,
-      city: this.parking.city
-    };
-  
 
-    this.parkingService.create(data)
+    this.parkingService.create(this.parking)
     .subscribe(
-      response => {
-        console.log(response);
+      data => {
+        console.log(data);
+        this.parking = new Parking();
         this.submitted = true;
+        this.goToList();
       },
       error => {
         console.log(error);
@@ -40,14 +36,14 @@ export class AddParkingComponent implements OnInit {
     );
   }
 
+  goToList(){
+    this.router.navigate(['/parkings']);
+  }
+
 
   newParking(): void {
     this.submitted = false;
-    this.parking = {
-      name: '',
-      type: '',
-      city: ''
-    };
+    this.parking = new Parking();
 
   }
 

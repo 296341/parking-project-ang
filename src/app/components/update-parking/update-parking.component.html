@@ -1,4 +1,5 @@
-<h2>Add Parking</h2>
+
+<h2>Update Parking</h2>
 <div style="width: 400px; margin: auto;">
     <div class="submit-form">
       <div *ngIf="!submitted">
@@ -38,12 +39,12 @@
             />
           </div>
   
-        <button (click)="saveParking()" class="btn btn-success">Submit</button>
+        <button (click)="updateParking()" type="submit" class="btn btn-success">Submit</button>
       </div>
   
-      <div *ngIf="submitted">
+     <!-- <div *ngIf="submitted">
         <h4>You submitted successfully!</h4>
         <button class="btn btn-success" (click)="newParking()">Add</button>
-      </div>
+      </div> -->
     </div>
   </div>

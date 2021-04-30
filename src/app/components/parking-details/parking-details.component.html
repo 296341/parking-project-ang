@@ -1,1 +1,18 @@
-<p>parking-details works!</p>
+<h2>parking Details</h2> 
+
+<hr/>
+<div *ngIf="parking">
+  <div>
+    <label><b>Name: </b></label> {{parking.name}}
+  </div>
+  <div>
+    <label><b>Type: </b></label> {{parking.type}}
+  </div>
+  <div>
+    <label><b>Cty: </b></label> {{parking.city}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to parkings List</button><br>
